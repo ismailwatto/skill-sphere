@@ -31,6 +31,15 @@
         </a>
         @endif
 
+        <a href="{{ route('chat.index') }}" class="sidebar-link {{ request()->routeIs('chat.*') ? 'active' : '' }}">
+            <i class="bi bi-chat-dots"></i> Live Chat
+        </a>
+
+        <a href="{{ route('developer.dashboard') }}" target="_blank" class="sidebar-link {{ request()->routeIs('developer.dashboard') ? 'active' : '' }}">
+            <i class="bi bi-code-slash"></i> Developer Dashboard
+            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+        </a>
+
         <div class="mt-auto pt-4 px-2">
             <div class="dropdown">
                 <a href="#" class="user-snippet dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">

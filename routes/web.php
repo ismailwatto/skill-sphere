@@ -40,10 +40,18 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', \App\Http\Controllers\ProductController::class);
     Route::resource('bookings', \App\Http\Controllers\BookingController::class);
     
-    // Profile Management
+    // Chat Routes
+    Route::get('/chat', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/start/{user}', [\App\Http\Controllers\ChatController::class, 'startConversation'])->name('chat.start');
+    Route::get('/chat/{user:name}', [\App\Http\Controllers\ChatController::class, 'show'])->name('chat.show');
+    Route::post('/chat/{conversation}/send', [\App\Http\Controllers\ChatController::class, 'sendMessage'])->name('chat.send');
+
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-    
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 });
+
+// Public Developer Documentation Routes
+Route::get('/developer-dashboard', \App\Http\Controllers\DeveloperDashboardController::class)->name('developer.dashboard');
+Route::get('/docs/chat-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'chatModule'])->name('docs.chat');

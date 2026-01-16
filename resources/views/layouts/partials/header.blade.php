@@ -24,6 +24,10 @@
             <i class="bi bi-bell"></i>
             <span class="notification-badge"></span>
         </button>
+
+        <a href="{{ route('chat.index') }}" class="btn btn-header-action rounded-circle" title="Live Chat">
+            <i class="bi bi-chat-dots"></i>
+        </a>
         
         <button class="btn btn-header-action rounded-circle d-none d-sm-flex" title="Quick Support">
             <i class="bi bi-question-circle"></i>

@@ -53,6 +53,10 @@
 
             @include('layouts.partials.footer')
         </div>
+
+        <a href="{{ route('chat.index') }}" class="floating-chat-btn" title="Open Chat">
+            <i class="bi bi-chat-dots-fill"></i>
+        </a>
     </div>
 
     <script>
