@@ -55,3 +55,6 @@ Route::middleware('auth')->group(function () {
 // Public Developer Documentation Routes
 Route::get('/developer-dashboard', \App\Http\Controllers\DeveloperDashboardController::class)->name('developer.dashboard');
 Route::get('/docs/chat-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'chatModule'])->name('docs.chat');
+Route::get('/docs/auth-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'authModule'])->name('docs.auth');
+Route::get('/docs/email-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'emailModule'])->name('docs.email');
+Route::get('/docs/crud-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'crudModule'])->name('docs.crud');

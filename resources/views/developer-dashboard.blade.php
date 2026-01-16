@@ -107,33 +107,76 @@
                 </div>
             </div>
 
-            <!-- Coming Soon Modules -->
+            <!-- Authentication Module -->
             <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-4 h-100 opacity-50">
+                <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
                     <div class="card-body p-4">
-                        <div class="icon-box bg-secondary-soft mb-3" style="width: 60px; height: 60px;">
-                            <i class="bi bi-shield-lock text-secondary fs-3"></i>
+                        <div class="icon-box bg-success-soft mb-3" style="width: 60px; height: 60px;">
+                            <i class="bi bi-shield-lock-fill text-success fs-3"></i>
                         </div>
                         <h5 class="fw-bold mb-2">Authentication System</h5>
-                        <p class="text-muted small mb-4">Coming soon...</p>
-                        <button class="btn btn-secondary w-100" disabled>
-                            <i class="bi bi-lock me-2"></i>Coming Soon
-                        </button>
+                        <p class="text-muted small mb-4">
+                            Login & session management with Laravel authentication and rate limiting.
+                        </p>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge bg-success-soft text-success">Session Auth</span>
+                            <span class="badge bg-info-soft text-info">Rate Limiting</span>
+                            <span class="badge bg-warning-soft text-warning">Bootstrap 5</span>
+                        </div>
+
+                        <a href="{{ route('docs.auth') }}" class="btn btn-success w-100">
+                            <i class="bi bi-book me-2"></i>View Implementation
+                        </a>
                     </div>
                 </div>
             </div>
-
+            <!-- Email with Queue Module -->
             <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-4 h-100 opacity-50">
+                <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
                     <div class="card-body p-4">
-                        <div class="icon-box bg-secondary-soft mb-3" style="width: 60px; height: 60px;">
-                            <i class="bi bi-database text-secondary fs-3"></i>
+                        <div class="icon-box bg-warning-soft mb-3" style="width: 60px; height: 60px;">
+                            <i class="bi bi-envelope-fill text-warning fs-3"></i>
                         </div>
-                        <h5 class="fw-bold mb-2">Database Architecture</h5>
-                        <p class="text-muted small mb-4">Coming soon...</p>
-                        <button class="btn btn-secondary w-100" disabled>
-                            <i class="bi bi-lock me-2"></i>Coming Soon
-                        </button>
+                        <h5 class="fw-bold mb-2">Email with Queue</h5>
+                        <p class="text-muted small mb-4">
+                            Send emails asynchronously using Laravel Queue for better performance.
+                        </p>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge bg-success-soft text-success">Laravel Mail</span>
+                            <span class="badge bg-info-soft text-info">Queue</span>
+                            <span class="badge bg-warning-soft text-warning">Async</span>
+                        </div>
+
+                        <a href="{{ route('docs.email') }}" class="btn btn-warning w-100">
+                            <i class="bi bi-book me-2"></i>View Implementation
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Crud Module -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
+                    <div class="card-body p-4">
+                        <div class="icon-box bg-warning-soft mb-3" style="width: 60px; height: 60px;">
+                            <i class="bi bi-grid-fill text-warning fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Crud in Laravel</h5>
+                        <p class="text-muted small mb-4">
+                            Crud in Laravel add edit update  and delete.
+                        </p>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge bg-success-soft text-success">Add</span>
+                            <span class="badge bg-info-soft text-info">Edit</span>
+                            <span class="badge bg-info-soft text-primary">Update</span>
+                            <span class="badge bg-warning-soft text-warning">Delete</span>
+                        </div>
+
+                        <a href="{{ route('docs.crud') }}" class="btn btn-secondary w-100">
+                            <i class="bi bi-book me-2"></i>View Implementation
+                        </a>
                     </div>
                 </div>
             </div>

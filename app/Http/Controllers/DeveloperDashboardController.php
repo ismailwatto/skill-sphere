@@ -21,4 +21,28 @@ class DeveloperDashboardController extends Controller
     {
         return view('docs.chat-module');
     }
+
+    /**
+     * Display the authentication module implementation guide.
+     */
+    public function authModule(): View
+    {
+        return view('docs.auth-module');
+    }
+
+    /**
+     * Display the email module implementation guide.
+     */
+    public function emailModule(): View
+    {
+        return view('docs.email-module');
+    }
+
+    /**
+     * Display the CRUD module implementation guide.
+     */
+    public function crudModule(): View
+    {
+        return view('docs.crud-module');
+    }
 }
