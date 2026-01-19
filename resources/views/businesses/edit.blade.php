@@ -79,6 +79,20 @@
                             <textarea name="business_address" class="form-control-refined w-100 @error('business_address') is-invalid @enderror" rows="4" placeholder="Full business location address">{{ old('business_address', $business->address) }}</textarea>
                             @error('business_address') <div class="invalid-feedback d-block mt-2">{{ $message }}</div> @enderror
                         </div>
+
+                        <div class="col-12">
+                            <label class="form-label-refined">Subscription Plan (Owner)</label>
+                            <select name="plan_id" class="form-control-refined w-100 @error('plan_id') is-invalid @enderror">
+                                <option value="">Select a plan</option>
+                                @foreach($plans as $plan)
+                                    <option value="{{ $plan->id }}" {{ old('plan_id', $owner ? $owner->plan_id : '') == $plan->id ? 'selected' : '' }}>
+                                        {{ $plan->name }} (${{ number_format($plan->price, 2) }})
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div class="extra-small text-muted mt-1">Updates the plan for the primary business owner.</div>
+                            @error('plan_id') <div class="invalid-feedback d-block mt-2">{{ $message }}</div> @enderror
+                        </div>
                     </div>
 
                     <div class="pt-5 d-flex justify-content-end">

@@ -180,6 +180,30 @@
                     </div>
                 </div>
             </div>
+            <!-- Payment Module -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
+                    <div class="card-body p-4">
+                        <div class="icon-box bg-primary-soft mb-3" style="width: 60px; height: 60px;">
+                            <i class="bi bi-credit-card-2-front-fill text-primary fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Stripe Payments</h5>
+                        <p class="text-muted small mb-4">
+                            Subscription management and payment processing with Stripe integration.
+                        </p>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge bg-success-soft text-success">SDK</span>
+                            <span class="badge bg-info-soft text-info">Webhooks</span>
+                            <span class="badge bg-warning-soft text-warning">Plans</span>
+                        </div>
+
+                        <a href="{{ route('docs.payment') }}" class="btn btn-primary w-100">
+                            <i class="bi bi-book me-2"></i>View Implementation
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -241,160 +265,3 @@
 </style>
 @endsection
 
-
-@section('title', 'Developer Dashboard')
-
-@section('content')
-<div class="row g-4">
-    <!-- Page Header -->
-    <div class="col-12">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <div>
-                <h2 class="fw-bold mb-1">Developer Dashboard</h2>
-                <p class="text-muted mb-0">Technical documentation and implementation guides</p>
-            </div>
-            <div>
-                <span class="badge bg-primary-soft text-primary px-3 py-2">
-                    <i class="bi bi-code-slash me-2"></i>Development Mode
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Implementation Modules Grid -->
-    <div class="col-12">
-        <div class="row g-4">
-            <!-- Chat Module Card -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
-                    <div class="card-body p-4">
-                        <div class="icon-box bg-primary-soft mb-3" style="width: 60px; height: 60px;">
-                            <i class="bi bi-chat-dots-fill text-primary fs-3"></i>
-                        </div>
-                        <h5 class="fw-bold mb-2">Live Chat Module</h5>
-                        <p class="text-muted small mb-4">Real-time messaging system using Laravel Reverb and WebSockets</p>
-                        
-                        <div class="d-flex flex-wrap gap-2 mb-4">
-                            <span class="badge bg-success-soft text-success">Laravel Reverb</span>
-                            <span class="badge bg-info-soft text-info">WebSockets</span>
-                            <span class="badge bg-warning-soft text-warning">Broadcasting</span>
-                        </div>
-
-                        <a href="#chatImplementation" class="btn btn-primary w-100" data-bs-toggle="collapse">
-                            <i class="bi bi-book me-2"></i>View Implementation
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Placeholder for future modules -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift opacity-50">
-                    <div class="card-body p-4">
-                        <div class="icon-box bg-secondary-soft mb-3" style="width: 60px; height: 60px;">
-                            <i class="bi bi-shield-lock text-secondary fs-3"></i>
-                        </div>
-                        <h5 class="fw-bold mb-2">Authentication System</h5>
-                        <p class="text-muted small mb-4">Coming soon...</p>
-                        
-                        <button class="btn btn-secondary w-100" disabled>
-                            <i class="bi bi-lock me-2"></i>Coming Soon
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift opacity-50">
-                    <div class="card-body p-4">
-                        <div class="icon-box bg-secondary-soft mb-3" style="width: 60px; height: 60px;">
-                            <i class="bi bi-database text-secondary fs-3"></i>
-                        </div>
-                        <h5 class="fw-bold mb-2">Database Architecture</h5>
-                        <p class="text-muted small mb-4">Coming soon...</p>
-                        
-                        <button class="btn btn-secondary w-100" disabled>
-                            <i class="bi bi-lock me-2"></i>Coming Soon
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Chat Implementation Details (Collapsible) -->
-    <div class="col-12">
-        <div class="collapse" id="chatImplementation">
-            <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-header bg-white border-0 py-4">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="fw-bold mb-0">
-                            <i class="bi bi-chat-dots-fill text-primary me-2"></i>
-                            How to Implement Live Chat Module
-                        </h4>
-                        <button class="btn btn-sm btn-light rounded-pill" data-bs-toggle="collapse" data-bs-target="#chatImplementation">
-                            <i class="bi bi-x-lg"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body p-4">
-                    <div class="alert alert-primary border-0 mb-4">
-                        <i class="bi bi-info-circle me-2"></i>
-                        <strong>Overview:</strong> This guide shows you how the real-time chat module was implemented in this application.
-                    </div>
-
-                    <!-- Implementation sections will be added here -->
-                    <div class="row g-4">
-                        <div class="col-12">
-                            <h5 class="fw-bold mb-3">
-                                <span class="badge bg-primary me-2">1</span>
-                                Backend Setup
-                            </h5>
-                            <p class="text-muted">Configure Laravel Reverb and broadcasting...</p>
-                        </div>
-
-                        <div class="col-12">
-                            <h5 class="fw-bold mb-3">
-                                <span class="badge bg-primary me-2">2</span>
-                                Database Schema
-                            </h5>
-                            <p class="text-muted">Create conversations and messages tables...</p>
-                        </div>
-
-                        <div class="col-12">
-                            <h5 class="fw-bold mb-3">
-                                <span class="badge bg-primary me-2">3</span>
-                                Frontend Integration
-                            </h5>
-                            <p class="text-muted">Set up Echo and WebSocket listeners...</p>
-                        </div>
-
-                        <div class="col-12">
-                            <h5 class="fw-bold mb-3">
-                                <span class="badge bg-primary me-2">4</span>
-                                Real-time Broadcasting
-                            </h5>
-                            <p class="text-muted">Configure events and channels...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<style>
-.hover-lift {
-    transition: all 0.3s ease;
-}
-
-.hover-lift:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15) !important;
-}
-
-.bg-secondary-soft {
-    background-color: rgba(108, 117, 125, 0.08);
-}
-</style>
-@endsection

@@ -24,6 +24,9 @@ class User extends Authenticatable
         'email',
         'password',
         'status',
+        'plan_id',
+        'stripe_customer_id',
+        'payment_status',
     ];
 
     public function business()
@@ -34,6 +37,11 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
     }
 
     /**

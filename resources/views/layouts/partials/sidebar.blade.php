@@ -14,9 +14,12 @@
         <a href="{{ route('businesses.index') }}" class="sidebar-link {{ request()->routeIs('businesses.*') ? 'active' : '' }}">
             <i class="bi bi-people"></i> Customers
         </a>
+        <a href="{{ route('plans.index') }}" class="sidebar-link {{ request()->routeIs('plans.*') ? 'active' : '' }}">
+            <i class="bi bi-credit-card-2-front"></i> Plans
+        </a>
         @endif
 
-        @if(Auth::user()->business_id)
+        @if(Auth::user()->business_id || Auth::user()->role_id == 1)
         <a href="{{ route('users.index') }}" class="sidebar-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
             <i class="bi bi-person-workspace"></i> Staff Members
         </a>

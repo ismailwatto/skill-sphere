@@ -41,6 +41,7 @@ class BusinessService
                 'name' => $data['owner_name'],
                 'email' => $data['owner_email'],
                 'password' => Hash::make($data['owner_password']),
+                'plan_id' => $data['plan_id'] ?? null,
                 'status' => 'active',
             ]);
 
@@ -61,6 +62,25 @@ class BusinessService
             'address' => $data['business_address'],
             'status' => $data['status'] ?? $business->status,
         ]);
+
+        // Update Owner Plan if provided
+        // Update Owner Plan if provided (using array_key_exists to handle null values)
+        if (array_key_exists('plan_id', $data)) {
+            $owner = User::where('business_id', $business->id)
+                ->whereHas('role', function($q) {
+                    $q->where('name', 'Business Owner');
+                })->first();
+            
+            // Fallback: If no user with "Business Owner" role, take the first user created for this business.
+            if (!$owner) {
+                $owner = User::where('business_id', $business->id)->orderBy('id')->first();
+            }
+
+            if ($owner) {
+                $owner->update(['plan_id' => $data['plan_id']]);
+            }
+        }
+
         return $business;
     }
 
@@ -84,7 +104,9 @@ class BusinessService
             $business->owner = User::where('business_id', $business->id)
                 ->whereHas('role', function($q) {
                     $q->where('name', 'Business Owner');
-                })->first();
+                })
+                ->with('plan')
+                ->first();
             return $business;
         });
     }

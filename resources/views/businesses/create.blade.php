@@ -107,8 +107,20 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <label class="form-label-refined">Verify Password</label>
                                     <input type="password" name="owner_password_confirmation" class="form-control-refined w-100" placeholder="Repeat password" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label-refined">Subscription Plan</label>
+                                    <select name="plan_id" class="form-control-refined w-100 @error('plan_id') is-invalid @enderror">
+                                        <option value="">Select a plan</option>
+                                        @foreach($plans as $plan)
+                                            <option value="{{ $plan->id }}" {{ old('plan_id') == $plan->id ? 'selected' : '' }}>
+                                                {{ $plan->name }} (${{ number_format($plan->price, 2) }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('plan_id') <div class="invalid-feedback d-block mt-2">{{ $message }}</div> @enderror
                                 </div>
                             </div>
 

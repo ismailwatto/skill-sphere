@@ -26,7 +26,6 @@
         
         code, pre {
             font-family: 'Fira Code', monospace;
-            background: #f8f9fa;
             padding: 2px 6px;
             border-radius: 4px;
             font-size: 0.9em;

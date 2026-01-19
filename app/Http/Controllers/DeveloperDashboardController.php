@@ -45,4 +45,12 @@ class DeveloperDashboardController extends Controller
     {
         return view('docs.crud-module');
     }
+
+    /**
+     * Display the payment module implementation guide.
+     */
+    public function paymentModule(): View
+    {
+        return view('docs.payment-module');
+    }
 }

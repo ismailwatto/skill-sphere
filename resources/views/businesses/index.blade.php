@@ -62,8 +62,27 @@
                             @endif
                         </td>
                         <td>
-                            <div class="extra-small fw-bold">{{ ucfirst($business->subscription_status) }}</div>
-                            <div class="extra-small text-muted">Ends: {{ $business->subscription_ends_at ? $business->subscription_ends_at->format('M d, Y') : 'N/A' }}</div>
+                            @if($business->owner && $business->owner->plan)
+                                <div class="fw-bold small">{{ $business->owner->plan->name }}</div>
+                                <div class="extra-small text-muted">${{ number_format($business->owner->plan->price, 2) }}</div>
+                                <div class="mt-1">
+                                    @if($business->owner->payment_status == 'paid')
+                                        <span class="badge bg-success-soft text-success border border-success border-opacity-25 rounded-pill px-2 py-1 extra-small">
+                                            <i class="bi bi-check-circle me-1"></i> Paid
+                                        </span>
+                                    @elseif($business->owner->payment_status == 'pending')
+                                        <span class="badge bg-warning-soft text-warning border border-warning border-opacity-25 rounded-pill px-2 py-1 extra-small">
+                                            <i class="bi bi-clock me-1"></i> Pending
+                                        </span>
+                                    @else
+                                        <span class="badge bg-danger-soft text-danger border border-danger border-opacity-25 rounded-pill px-2 py-1 extra-small">
+                                            <i class="bi bi-x-circle me-1"></i> {{ ucfirst($business->owner->payment_status ?? 'Unpaid') }}
+                                        </span>
+                                    @endif
+                                </div>
+                            @else
+                                <span class="text-muted small">No Plan</span>
+                            @endif
                         </td>
                         <td class="pe-4 text-end">
                             <div class="dropdown">
@@ -71,6 +90,13 @@
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3">
+                                    @if($business->owner)
+                                        <li>
+                                            <a class="dropdown-item py-2" href="{{ route('payment.checkout', $business->owner->id) }}">
+                                                <i class="bi bi-credit-card me-2 text-success"></i> Make Payment
+                                            </a>
+                                        </li>
+                                    @endif
                                     <li><a class="dropdown-item py-2" href="{{ route('businesses.edit', $business->id) }}"><i class="bi bi-pencil me-2"></i> Edit Details</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li>

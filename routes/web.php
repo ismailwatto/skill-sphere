@@ -38,7 +38,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::resource('businesses', \App\Http\Controllers\BusinessController::class);
     Route::resource('products', \App\Http\Controllers\ProductController::class);
+
     Route::resource('bookings', \App\Http\Controllers\BookingController::class);
+    Route::resource('plans', \App\Http\Controllers\PlanController::class);
     
     // Chat Routes
     Route::get('/chat', [\App\Http\Controllers\ChatController::class, 'index'])->name('chat.index');
@@ -50,7 +52,14 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+
+    // Payment Routes
+    Route::get('/users/{user}/payment', [\App\Http\Controllers\PaymentController::class, 'checkout'])->name('payment.checkout');
+    Route::get('/payment/success', [\App\Http\Controllers\PaymentController::class, 'success'])->name('payment.success');
 });
+
+// Stripe Handler
+Route::post('/stripe/webhook', [\App\Http\Controllers\WebhookController::class, 'handleWebhook'])->name('stripe.webhook');
 
 // Public Developer Documentation Routes
 Route::get('/developer-dashboard', \App\Http\Controllers\DeveloperDashboardController::class)->name('developer.dashboard');
@@ -58,3 +67,4 @@ Route::get('/docs/chat-module', [\App\Http\Controllers\DeveloperDashboardControl
 Route::get('/docs/auth-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'authModule'])->name('docs.auth');
 Route::get('/docs/email-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'emailModule'])->name('docs.email');
 Route::get('/docs/crud-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'crudModule'])->name('docs.crud');
+Route::get('/docs/payment-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'paymentModule'])->name('docs.payment');
