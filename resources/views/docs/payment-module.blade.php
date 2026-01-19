@@ -179,6 +179,36 @@ class PaymentController extends Controller
     }
 }</code></pre>
 
+                    <!-- LOGIC EXPLANATION -->
+                    <div class="card bg-light border-0 mb-4 mt-5">
+                        <div class="card-body">
+                            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-diagram-3-fill me-2"></i>How the "Invisible Handshake" Works</h5>
+                            <p class="text-muted small">Many beginners get confused here. The payment update does NOT happen in the user's browser. It happens server-to-server.</p>
+                            
+                            <div class="d-flex flex-column gap-3">
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-secondary rounded-pill me-3" style="width:25px;height:25px;display:flex;align-items:center;justify-content:center">1</span>
+                                    <span><strong>User</strong> enters card details on Stripe.com and clicks "Pay".</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-secondary rounded-pill me-3" style="width:25px;height:25px;display:flex;align-items:center;justify-content:center">2</span>
+                                    <span><strong>Stripe</strong> charges the card. If successful...</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-success rounded-pill me-3" style="width:25px;height:25px;display:flex;align-items:center;justify-content:center">3</span>
+                                    <div>
+                                        <strong>Stripe sends a "Request" (Webhook) to your Server</strong>
+                                        <div class="small text-muted">Stripe knocks on your door (<code>/stripe/webhook</code>) and says "Hey! Order #123 just paid!"</div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-secondary rounded-pill me-3" style="width:25px;height:25px;display:flex;align-items:center;justify-content:center">4</span>
+                                    <span><strong>Your Server</strong> (WebhookController) hears this, finds User #123, and marks them as 'Paid'.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h6 class="fw-bold text-dark mt-5">5.2 WebhookController.php</h6>
                     <p class="small text-muted">Create this file in <code>app/Http/Controllers/</code>. This handles the actual update when payment completes.</p>
                     <pre class="code-block"><code>&lt;?php
@@ -280,6 +310,7 @@ class WebhookController extends Controller
                             </div>
                             <ol>
                                 <li class="mb-2">Download <a href="https://stripe.com/docs/stripe-cli" target="_blank" class="text-primary">Stripe CLI</a> (Windows zip).</li>
+                                <li class="mb-2">OR Download from Git <a href="https://github.com/stripe/stripe-cli/releases/" target="_blank" class="text-primary">Stripe CLI</a> (Windows zip).</li>
                                 <li class="mb-2">Extract the <code>stripe.exe</code> file into a folder, e.g., <code>C:\Stripe</code>.</li>
                                 <li class="mb-2">Open your terminal (CMD or PowerShell) and go to that folder:
                                     <pre class="bg-dark text-white p-2 rounded mt-1 mb-2"><code>cd C:\Stripe</code></pre>
