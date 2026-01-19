@@ -26,11 +26,11 @@ class WebhookController extends Controller
             );
         } catch(\UnexpectedValueException $e) {
             // Invalid payload
-            Log::error('Webhook error: Invalid payload');
+            // Log::error('Webhook error: Invalid payload');
             return response()->json(['error' => 'Invalid payload'], 400);
         } catch(\Stripe\Exception\SignatureVerificationException $e) {
             // Invalid signature
-            Log::error('Webhook error: Invalid signature');
+            // Log::error('Webhook error: Invalid signature');
             return response()->json(['error' => 'Invalid signature'], 400);
         }
 
@@ -49,7 +49,7 @@ class WebhookController extends Controller
 
     protected function handleCheckoutSessionCompleted($session)
     {
-        Log::info('Handling checkout.session.completed', ['session_id' => $session->id]);
+        // Log::info('Handling checkout.session.completed', ['session_id' => $session->id]);
         
         $customerId = $session->customer;
         $userId = $session->metadata->user_id ?? null;
@@ -61,7 +61,7 @@ class WebhookController extends Controller
                 $user->stripe_customer_id = $customerId;
                 $user->payment_status = 'paid';
                 $user->save();
-                Log::info('Updated user stripe customer ID and payment status', ['user_id' => $user->id, 'customer_id' => $customerId]);
+                // Log::info('Updated user stripe customer ID and payment status', ['user_id' => $user->id, 'customer_id' => $customerId]);
             }
         }
     }
