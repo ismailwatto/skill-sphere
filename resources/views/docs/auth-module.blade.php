@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-11 col-xl-10 mx-auto">
             <div class="mb-4">
-                <a href="{{ route('developer.dashboard') }}" class="btn btn-outline-primary">
+                <a href="{{ route('home') }}" class="btn btn-outline-primary">
                     <i class="bi bi-arrow-left me-2"></i>Back to Documentation
                 </a>
             </div>
@@ -551,7 +551,7 @@ Route::middleware('auth')-&gt;group(function () {
             </div>
 
             <div class="text-center mt-5 mb-5">
-                <a href="{{ route('developer.dashboard') }}" class="btn btn-primary btn-lg px-5">
+                <a href="{{ route('home') }}" class="btn btn-primary btn-lg px-5">
                     <i class="bi bi-arrow-left me-2"></i>Back to Documentation Home
                 </a>
             </div>

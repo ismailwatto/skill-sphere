@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 // Public Routes
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+Route::get('/', \App\Http\Controllers\DeveloperDashboardController::class)->name('home');
 
 // Guest Routes
 Route::middleware('guest')->group(function () {
@@ -63,7 +61,7 @@ Route::middleware('auth')->group(function () {
 Route::post('/stripe/webhook', [\App\Http\Controllers\WebhookController::class, 'handleWebhook'])->name('stripe.webhook');
 
 // Public Developer Documentation Routes
-Route::get('/developer-dashboard', \App\Http\Controllers\DeveloperDashboardController::class)->name('developer.dashboard');
+// Root route '/' now handles the developer dashboard.
 Route::get('/docs/chat-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'chatModule'])->name('docs.chat');
 Route::get('/docs/auth-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'authModule'])->name('docs.auth');
 Route::get('/docs/email-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'emailModule'])->name('docs.email');

@@ -38,7 +38,7 @@
             <i class="bi bi-chat-dots"></i> Live Chat
         </a>
 
-        <a href="{{ route('developer.dashboard') }}" target="_blank" class="sidebar-link {{ request()->routeIs('developer.dashboard') ? 'active' : '' }}">
+        <a href="{{ route('home') }}" target="_blank" class="sidebar-link {{ request()->routeIs('home') ? 'active' : '' }}">
             <i class="bi bi-code-slash"></i> Developer Dashboard
             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
         </a>
