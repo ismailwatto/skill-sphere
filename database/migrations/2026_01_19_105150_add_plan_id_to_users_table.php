@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('plan_id')->nullable()->after('role_id')->constrained()->nullOnDelete();
+            $table->string('stripe_customer_id')->nullable()->index()->after('email');
             $table->string('payment_status')->nullable()->default('pending')->after('plan_id');
         });
     }
@@ -24,7 +25,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['plan_id']);
-            $table->dropColumn(['plan_id', 'payment_status']);
+            $table->dropColumn(['plan_id', 'payment_status','stripe_customer_id']);
         });
     }
 };
