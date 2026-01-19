@@ -19,7 +19,7 @@
         </a>
         @endif
 
-        @if(Auth::user()->business_id || Auth::user()->role_id == 1)
+        @if(Auth::user()->business_id)
         <a href="{{ route('users.index') }}" class="sidebar-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
             <i class="bi bi-person-workspace"></i> Staff Members
         </a>
@@ -29,6 +29,8 @@
         <a href="{{ route('bookings.index') }}" class="sidebar-link {{ request()->routeIs('bookings.*') ? 'active' : '' }}">
             <i class="bi bi-cart"></i> Bookings
         </a>
+         @endif
+        @if(Auth::user()->business_id || Auth::user()->role_id == 1)
         <a href="{{ route('roles.index') }}" class="sidebar-link {{ request()->routeIs('roles.*') ? 'active' : '' }}">
             <i class="bi bi-shield-lock"></i> Roles
         </a>
