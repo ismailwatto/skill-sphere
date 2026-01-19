@@ -204,6 +204,30 @@
                     </div>
                 </div>
             </div>
+            <!-- Artisan Commands -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
+                    <div class="card-body p-4">
+                        <div class="icon-box bg-dark-soft mb-3" style="width: 60px; height: 60px;">
+                            <i class="bi bi-terminal-fill text-dark fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Artisan Commands</h5>
+                        <p class="text-muted small mb-4">
+                            Master the command line. Learn how to create, run, and schedule custom Artisan commands.
+                        </p>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <span class="badge bg-dark-soft text-dark">Terminal</span>
+                            <span class="badge bg-info-soft text-info">Scheduling</span>
+                            <span class="badge bg-warning-soft text-warning">Automation</span>
+                        </div>
+
+                        <a href="{{ route('docs.artisan') }}" class="btn btn-outline-dark w-100">
+                            <i class="bi bi-book me-2"></i>View Implementation
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

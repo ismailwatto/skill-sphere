@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,14 @@ Route::get('/docs/auth-module', [\App\Http\Controllers\DeveloperDashboardControl
 Route::get('/docs/email-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'emailModule'])->name('docs.email');
 Route::get('/docs/crud-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'crudModule'])->name('docs.crud');
 Route::get('/docs/payment-module', [\App\Http\Controllers\DeveloperDashboardController::class, 'paymentModule'])->name('docs.payment');
+Route::get('/docs/artisan-commands', [\App\Http\Controllers\DeveloperDashboardController::class, 'artisanCommandsModule'])->name('docs.artisan');
+
+Route::get('/update-user-status', function () {
+    $exitCode = Artisan::call('user:update-status');
+    $output = Artisan::output();
+    return response()->json([
+        'message' => 'Command executed successfully',
+        'exit_code' => $exitCode,
+        'output' => trim($output)
+    ]);
+});

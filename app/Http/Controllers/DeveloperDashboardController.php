@@ -46,11 +46,16 @@ class DeveloperDashboardController extends Controller
         return view('docs.crud-module');
     }
 
-    /**
-     * Display the payment module implementation guide.
-     */
     public function paymentModule(): View
     {
         return view('docs.payment-module');
+    }
+
+    /**
+     * Display the artisan commands implementation guide.
+     */
+    public function artisanCommandsModule(): View
+    {
+        return view('docs.artisan-commands');
     }
 }
